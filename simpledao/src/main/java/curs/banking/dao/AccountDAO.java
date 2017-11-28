@@ -24,7 +24,6 @@ public class AccountDAO extends AbstractBaseDAO<Account> {
     mBankDAO = new BankDAO(mConnection);
   }
 
-  // ResultSet pRS pozitionat pe randul necesar !!!!
   @Override
   protected Account loadFromResultSet(ResultSet pRS) throws SQLException {
     Account account = new Account();
@@ -40,10 +39,10 @@ public class AccountDAO extends AbstractBaseDAO<Account> {
     }
     account.setAmount(pRS.getDouble(5));
     String accType = pRS.getString(6);
-    /**
-     * switch(accType) { case "DEBIT": account.setAccountType(AccountType.DEBIT);
-     * break; case "CREDIT": account.setAccountType(AccountType.CREDIT); break; case
-     * "SAVINGS": account.setAccountType(AccountType.SAVINGS); break; }
+    /*
+      switch(accType) { case "DEBIT": account.setAccountType(AccountType.DEBIT);
+      break; case "CREDIT": account.setAccountType(AccountType.CREDIT); break; case
+      "SAVINGS": account.setAccountType(AccountType.SAVINGS); break; }
      */
     for (AccountType at : AccountType.values()) {
       if (at.name().equals(accType)) {

@@ -12,11 +12,11 @@ import curs.banking.model.Account;
 import curs.banking.model.Customer;
 
 public abstract class AbstractBaseDAO<T> implements BasicDAO<T> {
-  protected Connection mConnection;
+   Connection mConnection;
   
   protected abstract T loadFromResultSet(ResultSet pRS) throws SQLException; 
 
-  public AbstractBaseDAO(Connection pConnection) {
+   AbstractBaseDAO(Connection pConnection) {
     mConnection = pConnection;
   }
   
@@ -54,7 +54,6 @@ public abstract class AbstractBaseDAO<T> implements BasicDAO<T> {
 
         return loadFromResultSet(rs);
       } else {
-        // throw new DAOException("Id not found:" + pId);
         return null;
       }
     } catch (SQLException e) {
